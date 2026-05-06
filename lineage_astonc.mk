@@ -25,6 +25,8 @@ TARGET_INCLUDE_LIVE_WALLPAPERS := true
 TARGET_SUPPORTS_GOOGLE_FILES := true
 TARGET_INCLUDE_WEATHER := true
 TARGET_SUPPORTS_GOOGLE_TELEPHONY := false
+USE_REALITY_ENGINE := true
+SURFACE_FLINGER_BOOST := true
 
 PRODUCT_NAME := lineage_astonc
 PRODUCT_DEVICE := astonc
@@ -41,3 +43,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=PJE110 \
     SystemDevice=OP5CF9L1 \
     SystemName=PJE110
+
+$(call inherit-product, vendor/lunaris-priv/keys/keys.mk)
