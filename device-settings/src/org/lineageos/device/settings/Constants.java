@@ -110,8 +110,22 @@ public class Constants {
 
     /** Panel test-TE counter: real DDIC self-refresh rate (LTPO). Write "1" to
      *  enable the irq (done at boot by DeviceSettingsService); reads return the
-     *  measured rate, or 0 until two TE pulses have been observed. */
+     *  measured rate, or 0 until two TE pulses have been observed. Consumed by the
+     *  SurfaceFlinger "Show refresh rate" overlay via
+     *  ro.surface_flinger.panel_refresh_rate_node, not by device-settings. */
     public static final String NODE_TEST_TE = "/sys/kernel/oplus_display/test_te";
+
+    /** CRTC frame-done counter = SurfaceFlinger composition rate (NOT the panel
+     *  self-refresh rate). This is what the crDroid FPS Info tile shows
+     *  (config_fpsInfoSysNode); GameBar reads the same node for a matching number. */
+    public static final String NODE_MEASURED_FPS = "/sys/class/drm/sde-crtc-0/measured_fps";
+
+    /** ADFR/LTPO min fps request: 0 = auto (panel self-refresh drops to the
+     *  timing's lowest table entry: 20Hz active floor, 1Hz idle), N = fixed
+     *  (kernel clamps into the current timing's table, so writing the tile
+     *  rate pins the DDIC at the mode rate). Applied by the kernel
+     *  immediately and re-applied on every panel enable/timing switch. */
+    public static final String NODE_ADFR_MIN_FPS = "/sys/kernel/oplus_display/adfr_min_fps";
 
     /** Refresh rate */
     public static final String KEY_REFRESH_RATE_MODE = "refresh_rate_mode";
