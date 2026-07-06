@@ -20,10 +20,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.UserHandle;
 import android.os.Vibrator;
-import android.provider.Settings;
 import android.util.Log;
 
-import org.lineageos.internal.util.FileUtils;
+import lineageos.providers.LineageSettings;
+
+import org.lineageos.device.settings.utils.FileUtils;
 import org.lineageos.device.settings.Constants;
 
 public abstract class SliderControllerBase {
@@ -79,7 +80,7 @@ public abstract class SliderControllerBase {
         }
 
         try {
-            int state = Integer.parseInt(FileUtils.readOneLine(Constants.NODE_SLIDER_STATE).trim());
+            int state = Integer.parseInt(FileUtils.readLine(Constants.NODE_SLIDER_STATE).trim());
             ret = processAction(mActions[state - 1]);
             if (ret > 0 && notify) {
                 sendUpdateBroadcast(context, state - 1, ret);
@@ -94,8 +95,8 @@ public abstract class SliderControllerBase {
         if (mVibrator == null) {
             return;
         }
-        boolean enabled = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1, UserHandle.USER_CURRENT) != 0;
+        boolean enabled = LineageSettings.System.getIntForUser(mContext.getContentResolver(),
+                LineageSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1, UserHandle.USER_CURRENT) != 0;
         if (enabled) {
             mVibrator.vibrate(50);
         }
