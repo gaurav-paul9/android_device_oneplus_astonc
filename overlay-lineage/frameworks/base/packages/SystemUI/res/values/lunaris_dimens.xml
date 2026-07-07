@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="ax_dynamic_bar_keyguard_chip_extra_bottom_margin">8dp</dimen>
+    <dimen name="ax_dynamic_bar_keyguard_chip_extra_bottom_margin">5dp</dimen>
 </resources>
