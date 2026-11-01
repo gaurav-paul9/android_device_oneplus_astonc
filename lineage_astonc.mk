@@ -43,8 +43,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="qssi-user 16 BP2A.250605.015 1783519872530 release-keys" \
     BuildFingerprint=OnePlus/PJE110/OP5CF9L1:16/TP1A.220905.001/U.4ca773b-27f7835-28166d0:user/release-keys \
     DeviceName=OP5CF9L1 \
-    DeviceProduct=PJE110 \
+    DeviceProduct=OP5CF9L1 \
     SystemDevice=OP5CF9L1 \
-    SystemName=PJE110
+    SystemName=OP5CF9L1
 
 $(call inherit-product, vendor/lunaris-priv/keys/keys.mk)
